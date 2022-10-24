@@ -1,0 +1,7 @@
+repository\UserRepository.class
+listener\DependencyInitializationContextListener.class
+service\UserService.class
+servlet\UsersServlet.class
+filter\LoggingFilter.class
+model\User.class
+repository\JdbcUsersRepository.class
