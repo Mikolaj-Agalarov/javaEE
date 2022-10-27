@@ -4,6 +4,10 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
 http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
+    <filer>
+        <filter-name>LoggingFilter</filter-name>
+        <filter-class>filter.LoggingFilter</filter-class>
+    </filer>
     <servlet>
         <servlet-name>HelloServlet</servlet-name>
         <servlet-class>com.example.servlet.HelloServlet</servlet-class>

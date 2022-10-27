@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("/users")
@@ -32,4 +33,5 @@ public class UsersServlet extends HttpServlet {
         req.setAttribute("users", users);
         getServletContext().getRequestDispatcher("/users.jsp").forward(req, resp);
     }
+
 }
