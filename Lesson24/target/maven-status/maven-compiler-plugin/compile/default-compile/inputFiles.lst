@@ -1,0 +1,10 @@
+D:\JavaEE\Lesson24\src\main\java\servlet\LoginServlet.java
+D:\JavaEE\Lesson24\src\main\java\repository\UserRepository.java
+D:\JavaEE\Lesson24\src\main\java\servlet\RegistrationServlet.java
+D:\JavaEE\Lesson24\src\main\java\service\UserService.java
+D:\JavaEE\Lesson24\src\main\java\servlet\FilteredUsersServlet.java
+D:\JavaEE\Lesson24\src\main\java\servlet\UsersServlet.java
+D:\JavaEE\Lesson24\src\main\java\model\User.java
+D:\JavaEE\Lesson24\src\main\java\listener\DependencyInitializationContextListener.java
+D:\JavaEE\Lesson24\src\main\java\repository\JdbcUsersRepository.java
+D:\JavaEE\Lesson24\src\main\java\filter\LoggingFilter.java
