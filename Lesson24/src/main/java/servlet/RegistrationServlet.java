@@ -1,6 +1,5 @@
 package servlet;
 
-import model.User;
 import service.UserService;
 
 import javax.servlet.ServletConfig;
@@ -11,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
-import static java.lang.System.out;
 
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
@@ -28,7 +25,7 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/registration.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("users").forward(req, resp);
     }
 
 
@@ -37,11 +34,11 @@ public class RegistrationServlet extends HttpServlet {
 
 
         final String username = req.getParameter("username");
-        final String password = req.getParameter("userage");
+        final String password = req.getParameter("password");
 
         try (PrintWriter writer = resp.getWriter()) {
             userService.addUser(username, password);
-            getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
+            resp.sendRedirect("users");
         }
 
     }

@@ -21,8 +21,8 @@ public class UserService {
         userRepository.addUser(name, password);
     }
 
-    public boolean doesUserExists(String name, String password) {
-        return userRepository.doesUserExists(name, password);
+    public boolean doesUserExists(String name) {
+        return userRepository.doesUserExists(name);
     }
 
     public List<User> filterUsers(String prefix) {

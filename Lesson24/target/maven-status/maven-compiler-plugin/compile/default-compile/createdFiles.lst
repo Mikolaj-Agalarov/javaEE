@@ -1,10 +1,10 @@
-repository\UserRepository.class
-listener\DependencyInitializationContextListener.class
 servlet\RegistrationServlet.class
 service\UserService.class
 servlet\FilteredUsersServlet.class
-servlet\UsersServlet.class
 filter\LoggingFilter.class
+servlet\LoginServlet.class
+repository\UserRepository.class
+listener\DependencyInitializationContextListener.class
+servlet\UsersServlet.class
 model\User.class
 repository\JdbcUsersRepository.class
-servlet\LoginServlet.class

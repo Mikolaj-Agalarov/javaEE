@@ -9,11 +9,8 @@ import java.util.List;
 public class JdbcUsersRepository implements UserRepository {
 
     private final Connection connection;
-
-    private static final String SHOW_All_USERS = "SELECT name,password FROM users";
     private static final String ADD_USER = "INSERT INTO users (name, password) VALUES (?,?)";
-    private static final String GET_USER = "select name, password from users where name = ?";
-    private static final String FIND_USER = "select * from users WHERE name=? AND password=?";
+    private static final String FIND_USER = "select * from users WHERE name=?";
 
     public JdbcUsersRepository(Connection connection) {
         this.connection = connection;
@@ -23,11 +20,14 @@ public class JdbcUsersRepository implements UserRepository {
     public List<User> findUsers() {
         try {
             Statement statement = connection.createStatement();
-            String sql = "Select name from users";
+            String sql = "select id, name, password, created_at from users";
             ResultSet rs = statement.executeQuery(sql);
             final List<User> users = new ArrayList<>();
             while (rs.next()) {
-                final User user = new User(rs.getString("name"));
+                final User user = new User(rs.getLong("id"),
+                        rs.getString("name"),
+                        rs.getString("password"),
+                        rs.getDate("created_at"));
                 users.add(user);
             }
             return users;
@@ -39,10 +39,12 @@ public class JdbcUsersRepository implements UserRepository {
     @Override
     public void addUser(String name, String password) {
         try {
-            PreparedStatement statement = connection.prepareStatement(ADD_USER);
-            statement.setString(1, name);
-            statement.setString(2, password);
-            statement.executeUpdate();
+            if (!doesUserExists(name)) {
+                PreparedStatement statement = connection.prepareStatement(ADD_USER);
+                statement.setString(1, name);
+                statement.setString(2, password);
+                statement.executeUpdate();
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -50,17 +52,11 @@ public class JdbcUsersRepository implements UserRepository {
     }
 
     @Override
-    public boolean doesUserExists(String name, String password) {
+    public boolean doesUserExists(String name) {
         try (PreparedStatement statement = connection.prepareStatement(FIND_USER)) {
             statement.setString(1, name);
-            statement.setString(2, password);
             ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                return true;
-            }
-            else {
-                return false;
-            }
+            return rs.next();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

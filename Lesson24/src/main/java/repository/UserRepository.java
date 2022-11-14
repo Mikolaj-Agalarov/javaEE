@@ -10,7 +10,7 @@ public interface UserRepository {
 
     void addUser(String name, String password);
 
-    boolean doesUserExists(String name, String password);
+    boolean doesUserExists(String name);
 
     List<User> filterUsers(String prefix);
 }

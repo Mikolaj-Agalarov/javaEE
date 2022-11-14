@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -17,6 +18,7 @@
       <module name="lesson25" target="17" />
       <module name="lesson26" target="17" />
       <module name="lesson27" target="17" />
+      <module name="Lesson27" target="17" />
       <module name="lesson28" target="17" />
     </bytecodeTargetLevel>
   </component>
